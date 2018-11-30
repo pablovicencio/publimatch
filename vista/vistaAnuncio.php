@@ -25,7 +25,7 @@ if( isset($_GET['id']) ){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SE Aconcagua - Avisos publicitarios</title>
+    <title>PubliMatch - Avisos publicitarios</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@ if( isset($_GET['id']) ){
 
     <!-- Custom styles for this template -->
     <link href="../css/freelancer.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -143,38 +143,19 @@ label:hover ~ label {
 input[type="radio"]:checked ~ label {
   color: orange;
 }
+
+
+
   </style>
 
   </head>
 
   <body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="../index.php">SE Aconcagua</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos">Sugeridos</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto">Anunciate!</a>
-            </li>
-                                      <?php 
-                                        $re1 = $fun->busca_promo();   
-                                         if (!empty($re1)) {
-                                           echo '<li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1">PROMOCIONES!</a>
-            </li>';
-                                          }
-                                        ?>       
-          </ul>
-        </div>
+        <img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand js-scroll-trigger" href="../index.php">PubliMatch</a>
       </div>
     </nav>
   <div id="loading" style="display: none;">
@@ -232,6 +213,13 @@ input[type="radio"]:checked ~ label {
                         <span class="carousel-control-next-icon"></span>
                       </a>
                     </div>
+                    <span class="font-weight-bold"><?php echo $row['nom_comuna']; ?></span><br>
+                    <span class="font-weight-bold"><?php echo $row['dir_anuncio']; ?></span><br><br>
+                    <span >Telefonos: <?php echo $row['fono']; ?></span><br><br>
+
+
+
+                   
                 </div><br><br>
 
             <div class="col-4">
@@ -267,13 +255,11 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
 
                   <div class="form-group">
 
-                    <span class="font-weight-bold"><?php echo $row['nom_comuna']; ?></span><br>
-                    <span class="font-weight-bold"><?php echo $row['dir_anuncio']; ?></span><br><br>
-                    <span >Telefonos: <?php echo $row['fono']; ?></span><br><br>
+                    
+                    
 
-
-
-                    <?php
+                    <span class="badge badge-success"><label for="nota" style="color:white;font-size: 1rem;">★</label> <?php echo $row['puntaje']; ?></span><br><br>
+                     <?php
                       if ($row['fb'] <> '0') {
                          echo '<a  href="'.$row['fb'].'" target="blank">
                   <i class="fa fa-facebook-official" style="font-size:32px" ></i>
@@ -301,14 +287,6 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
                 </a><br>';
                        } 
                     ?> 
-
-                    <span class="badge badge-success"><label for="nota" style="color:white;font-size: 1rem;">★</label> <?php echo $row['puntaje']; ?></span><br>
-
-
-                    
-
-
-
 
 
 
@@ -359,7 +337,7 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
             
       </div>
     </header>
-<section class="bg-primary text-white mb-0" id="conocenos">
+<section class="bg-primary text-white mb-0" id="sugeridos">
 
 
 
@@ -450,17 +428,19 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
     </section>
 
 
-       <!-- Footer -->
-    <footer class="footer text-center">
+
+
+<!--         Footer  -->
+    <div class="footer2 text-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Dirección</h4>
+            <h5 class="text-uppercase mb-4">Dirección</h5>
             <p class="lead mb-0">Calle La Unión # 474
               <br>San Esteban, Los Andes</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Visitanos</h4>
+            <h5 class="text-uppercase mb-4">Visitanos</h5>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
@@ -490,26 +470,54 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
             </ul>
           </div>
           <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">SE Aconcagua</h4>
+            <h5 class="text-uppercase mb-4">PubliMatch</h5>
             <p class="lead mb-0">Esta plataforma digital esta a cargo de 
               <a href="http://www.andescode.cl" target="_blank">Andescode</a>.</p>
           </div>
         </div>
       </div>
-    </footer>
-
-    <div class="copyright py-4 text-center text-white">
+      <div class="copyright py-4 text-center text-white">
       <div class="container">
-        <small>Copyright &copy; SE Aconcagua 2018</small>
+        <small>Copyright &copy; PubliMatch 2018</small>
       </div>
     </div>
+    </div>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    
+
+    <footer class="footer text-center">
+    <nav class="navbar navbar-expand-sm bg-secondary  text-uppercase text-center" id="mainNav">
+    
+          <ul class="navbar-nav m-auto " >
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Sugeridos</a>
+            </li>
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
+            </li>
+                                      <?php 
+                                        $re1 = $fun->busca_promo();   
+                                         if (!empty($re1)) {
+                                           echo '<li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
+            </li>';
+                                          }
+                                        ?>       
+
+
+
+                
+          </ul>
+  </nav>
+</footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) 
     <div class="scroll-to-top d-lg-none position-fixed ">
       <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
         <i class="fa fa-chevron-up"></i>
       </a>
-    </div>
+    </div>-->
+
 
 
     <!-- Bootstrap core JavaScript -->
