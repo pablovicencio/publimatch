@@ -49,6 +49,22 @@ if( isset($_GET['id']) ){
 
 
     <script type="text/javascript">
+
+      function isMobile() {
+          try{ 
+              document.createEvent("TouchEvent"); 
+              document.getElementById("menuMob").style.display = "block";
+              document.getElementById("menuMobFoo").style.display = "block";
+
+          }
+          catch(e){ 
+              document.getElementById("menuDesk").style.display = "block";
+          }
+      }
+
+
+
+
         $(document).ajaxStart(function() {
           $("#formbuscar").hide();
           $("#loading").show();
@@ -150,14 +166,48 @@ input[type="radio"]:checked ~ label {
 
   </head>
 
-  <body id="page-top">
-
+<body id="page-top" onload="isMobile()">
+<div id="menuMob" name="menuMob" style="display: none;">
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         <a class="navbar-brand js-scroll-trigger" href="../index.php">PubliMatch</a>
       </div>
     </nav>
+</div>
+
+<div id="menuDesk" name="menuDesk" style="display: none;">
+  <nav class="navbar navbar-expand-sm bg-secondary fixed-top text-uppercase" id="mainNav">
+    <a class="navbar-brand js-scroll-trigger" href="../index.php" id="link-home" name="link-home">
+    <img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Publimatch
+  </a>
+          <ul class="navbar-nav ml-auto" >
+            <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="../index.php" id="link-home-mob" name="link-home-mob"><i class="fa fa-home" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-com-mob" name="link-com-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-com" name="link-com"> Sugeridos</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
+            </li>
+                                      <?php 
+                                        $re1 = $fun->busca_promo();   
+                                         if (!empty($re1)) {
+                                           echo '<li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
+            </li>';
+                                          }
+                                        ?>       
+
+
+
+                
+          </ul>
+  </nav>
+
+</div>
   <div id="loading" style="display: none;">
     <center><img src="img/load.gif"></center>
   </div>
@@ -484,13 +534,13 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
     </div>
 
     
-
+    <div id="menuMobFoo" name="menuMobFoo" style="display: none;">
     <footer class="footer text-center">
     <nav class="navbar navbar-expand-sm bg-secondary  text-uppercase text-center" id="mainNav">
     
           <ul class="navbar-nav m-auto " >
             <li class="nav-item mx-0 mx-0">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Sugeridos</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con" name="link-con">Sugeridos</a>
             </li>
             <li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
@@ -510,6 +560,7 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
           </ul>
   </nav>
 </footer>
+</div>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) 
     <div class="scroll-to-top d-lg-none position-fixed ">

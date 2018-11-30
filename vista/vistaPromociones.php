@@ -11,7 +11,7 @@ if( isset($_GET['id']) ){
   
   $fun = new Funciones();   
 
-
+setlocale(LC_ALL,"es_ES");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +23,7 @@ if( isset($_GET['id']) ){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SE Aconcagua - Avisos publicitarios</title>
+    <title>PubliMatch - Avisos publicitarios</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,13 +50,39 @@ if( isset($_GET['id']) ){
 
 
     <script type="text/javascript">
+
+
+      function isMobile() {
+          try{ 
+              document.createEvent("TouchEvent"); 
+              document.getElementById("menuMob").style.display = "block";
+              document.getElementById("menuMobFoo").style.display = "block";
+
+          }
+          catch(e){ 
+              document.getElementById("menuDesk").style.display = "block";
+          }
+      }
+
+
         $(document).ajaxStart(function() {
           $("#formbuscar").hide();
           $("#loading").show();
              }).ajaxStop(function() {
           $("#loading").hide();
           $("#formbuscar").show();
-          });  
+          }); 
+
+
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+
+
 
     function modal(id) {
     console.log(id);
@@ -73,12 +99,19 @@ if( isset($_GET['id']) ){
       data: {"id":id},
       dataType:'json',
       success:function(result){
+
+              var fecha = new Date(result[0].duracion_promo);
+              var options = {  month: 'long', day: 'numeric' };
+
+              var h = addZero(fecha.getHours());
+              var m = addZero(fecha.getMinutes());
          
               document.getElementById("titulo_promo").innerHTML = result[0].nom_anuncio;
               document.getElementById("img_promo").src = result[0].img_promo;
               document.getElementById("img_qr").innerHTML = result[0].qr_promo;
               document.getElementById("desc_promo").innerHTML = result[0].desc_promo;
-              document.getElementById("final_promo").innerHTML = result[0].duracion_promo;
+              document.getElementById("final_promo").innerHTML = fecha.toLocaleDateString("es-ES", options);
+              document.getElementById("hora_final_promo").innerHTML = h + ":" + m;
               document.getElementById("mapa").innerHTML = result[0].maps_anuncio;
               window.scroll(0, 0);
 
@@ -110,26 +143,35 @@ label:hover ~ label {
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="isMobile()">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+ <div id="menuMob" name="menuMob" style="display: none;">
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
         <img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         <a class="navbar-brand js-scroll-trigger" href="../index.php">PubliMatch</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto">Anunciate!</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
+</div>
+
+<div id="menuDesk" name="menuDesk" style="display: none;">
+  <nav class="navbar navbar-expand-sm bg-secondary fixed-top text-uppercase" id="mainNav">
+    <a class="navbar-brand js-scroll-trigger" href="../index.php" id="link-home" name="link-home">
+    <img src="../img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Publimatch
+  </a>
+          <ul class="navbar-nav ml-auto" >
+            <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="../index.php" id="link-home-mob" name="link-home-mob"><i class="fa fa-home" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
+            </li>    
+                
+          </ul>
+  </nav>
+
+</div>
   <div id="loading" style="display: none;">
     <center><img src="../img/load.gif"></center>
   </div>
@@ -219,17 +261,17 @@ label:hover ~ label {
     </section>
 
 
-       <!-- Footer -->
-    <footer class="footer text-center">
+<!--         Footer  -->
+    <div class="footer2 text-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Dirección</h4>
+            <h5 class="text-uppercase mb-4">Dirección</h5>
             <p class="lead mb-0">Calle La Unión # 474
               <br>San Esteban, Los Andes</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Visitanos</h4>
+            <h5 class="text-uppercase mb-4">Visitanos</h5>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
@@ -259,27 +301,40 @@ label:hover ~ label {
             </ul>
           </div>
           <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">SE Aconcagua</h4>
+            <h5 class="text-uppercase mb-4">PubliMatch</h5>
             <p class="lead mb-0">Esta plataforma digital esta a cargo de 
               <a href="http://www.andescode.cl" target="_blank">Andescode</a>.</p>
           </div>
         </div>
       </div>
-    </footer>
-
-    <div class="copyright py-4 text-center text-white">
+      <div class="copyright py-4 text-center text-white">
       <div class="container">
-        <small>Copyright &copy; SE Aconcagua 2018</small>
+        <small>Copyright &copy; PubliMatch 2018</small>
       </div>
     </div>
+    </div>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    
+    <div id="menuMobFoo" name="menuMobFoo" style="display: none;">
+    <footer class="footer text-center">
+    <nav class="navbar navbar-expand-sm bg-secondary  text-uppercase text-center" id="mainNav">
+    
+          <ul class="navbar-nav m-auto " >
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
+            </li>
+                
+          </ul>
+  </nav>
+</footer>
+</div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) 
     <div class="scroll-to-top d-lg-none position-fixed ">
       <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
         <i class="fa fa-chevron-up"></i>
       </a>
-    </div>
-
+    </div>-->
 
 
   <!-- Promocion Modal -->
@@ -309,7 +364,7 @@ label:hover ~ label {
            <div class="row">
              <div class="col-12">
                 <p id="desc_promo"></p>
-                <label>Esta promo finaliza a las <span id="final_promo"  name="final_promo"></span></label>
+                <label>Esta promo finaliza el <span id="final_promo"  name="final_promo"></span>, a las: <span id="hora_final_promo"  name="hora_final_promo"></span></label>
                 <h6>Encuentra esta promo en:<h6>
                     <div class="embed-responsive embed-responsive-16by9" id="mapa">
                     </div>

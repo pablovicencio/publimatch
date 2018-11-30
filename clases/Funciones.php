@@ -16,7 +16,7 @@ class Funciones
 
                
 
-                    $sql = "select b.id_promo, a.nom_anuncio, b.desc_promo, b.img_promo, b.duracion_promo, qr_promo, a.maps_anuncio
+                    $sql = "select b.id_promo, a.nom_anuncio, b.desc_promo, b.img_promo, b.duracion_promo, qr_promo, a.maps_anuncio, stock
                             from anuncios a inner join promo b on a.id_anuncio = b.fk_id_anuncio 
                             where b.vig_promo = 1 and b.id_promo = :id";
 

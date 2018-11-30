@@ -32,6 +32,21 @@
 
 
     <script type="text/javascript">
+
+
+    function isMobile() {
+          try{ 
+              document.createEvent("TouchEvent"); 
+              document.getElementById("menuMob").style.display = "block";
+              document.getElementById("menuMobFoo").style.display = "block";
+
+          }
+          catch(e){ 
+              document.getElementById("menuDesk").style.display = "block";
+          }
+      }
+
+
         $(document).ajaxStart(function() {
           $("#formbuscar").hide();
           $("#loading").show();
@@ -111,9 +126,19 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="isMobile()">
 
-<nav class="navbar navbar-expand-sm bg-secondary fixed-top text-uppercase" id="mainNav">
+<div id="menuMob" name="menuMob" style="display: none;">
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand js-scroll-trigger" href="index.php">PubliMatch</a>
+      </div>
+    </nav>
+</div>
+
+<div id="menuDesk" name="menuDesk" style="display: none;">
+  <nav class="navbar navbar-expand-sm bg-secondary fixed-top text-uppercase" id="mainNav">
     <a class="navbar-brand js-scroll-trigger" href="index.php" id="link-home" name="link-home">
     <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Publimatch
@@ -123,7 +148,7 @@
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.php" id="link-home-mob" name="link-home-mob"><i class="fa fa-home" aria-hidden="true"></i></a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#comunidad" id="link-com-mob" name="link-com-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#comunidad" id="link-com" name="link-com"> Categorias</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-com-mob" name="link-com-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-com" name="link-com"> Categorias</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Nosotros</a>
@@ -145,6 +170,10 @@
                 
           </ul>
   </nav>
+
+</div>
+
+
   <div id="loading" style="display: none;">
     <center><img src="img/load.gif"></center>
   </div>
@@ -191,7 +220,7 @@
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section class="portfolio" id="comunidad">
+    <section class="portfolio" id="categorias">
       <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0">Categorias</h2>
         <hr class="star-dark mb-5">
@@ -332,17 +361,17 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer text-center">
+    <!--         Footer  -->
+    <div class="footer2 text-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Dirección</h4>
+            <h5 class="text-uppercase mb-4">Dirección</h5>
             <p class="lead mb-0">Calle La Unión # 474
               <br>San Esteban, Los Andes</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Visitanos</h4>
+            <h5 class="text-uppercase mb-4">Visitanos</h5>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
@@ -372,26 +401,60 @@
             </ul>
           </div>
           <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">PubliMatch</h4>
+            <h5 class="text-uppercase mb-4">PubliMatch</h5>
             <p class="lead mb-0">Esta plataforma digital esta a cargo de 
               <a href="http://www.andescode.cl" target="_blank">Andescode</a>.</p>
           </div>
         </div>
       </div>
-    </footer>
-
-    <div class="copyright py-4 text-center text-white">
+      <div class="copyright py-4 text-center text-white">
       <div class="container">
         <small>Copyright &copy; PubliMatch 2018</small>
       </div>
     </div>
+    </div>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    
+    <div id="menuMobFoo" name="menuMobFoo" style="display: none;">
+    <footer class="footer text-center">
+    <nav class="navbar navbar-expand-sm bg-secondary  text-uppercase text-center" id="mainNav">
+    
+          <ul class="navbar-nav m-auto " >
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con" name="link-con">Categorias</a>
+            </li>
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Nosotros</a>
+            </li>
+            <li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
+            </li>
+                                      <?php 
+                                        $re1 = $fun->busca_promo();   
+                                         if (!empty($re1)) {
+                                           echo '<li class="nav-item mx-0 mx-0">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
+            </li>';
+                                          }
+                                        ?>       
+
+
+
+                
+          </ul>
+
+  </nav>
+</footer>
+</div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) 
     <div class="scroll-to-top d-lg-none position-fixed ">
       <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
         <i class="fa fa-chevron-up"></i>
       </a>
-    </div>
+    </div>-->
+
+
 
     <!-- Portfolio Modals -->
 
