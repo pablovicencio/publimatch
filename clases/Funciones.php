@@ -4,6 +4,39 @@ require_once dirname( __DIR__ ) .'/recursos/db/db.php';
 class Funciones 
 {
 
+    /*///////////////////////////////////////
+    Buscar Promociones de anuncio
+    //////////////////////////////////////*/
+        public function busca_promo_anu($id){
+
+            try{
+                
+                
+                $pdo = AccesoDB::getCon();
+
+               
+
+                    $sql = "select id_promo from promo where fk_id_anuncio = :id";
+
+                
+                                
+                            
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $stmt->execute();
+
+                $response = $stmt->fetchAll();
+                return $response;
+
+            } catch (Exception $e) {
+                echo"<script type=\"text/javascript\">alert('Error, comuniquese con el administrador".  $e->getMessage()." '); window.location='index.php';</script>";
+            }
+        }
+
+
+
+
   /*///////////////////////////////////////
     Buscar Promocion
     //////////////////////////////////////*/
@@ -44,24 +77,30 @@ class Funciones
    /*///////////////////////////////////////
     Buscar Promociones
     //////////////////////////////////////*/
-        public function busca_promo(){
+        public function busca_promo($id){
 
             try{
                 
                 
                 $pdo = AccesoDB::getCon();
 
-               
+                if($id == 0){
 
                     $sql = "select b.id_promo, a.nom_anuncio, b.desc_promo, b.img_promo
                             from anuncios a inner join promo b on a.id_anuncio = b.fk_id_anuncio 
-                            where b.vig_promo = 1 and a.fec_termino_anuncio >= sysdate() ";
+                            where b.vig_promo = 1 and a.fec_termino_anuncio >= sysdate() and b.duracion_promo > sysdate() and  b.fk_id_anuncio > 0 ";
+                        }else{
+                            $sql = "select b.id_promo, a.nom_anuncio, b.desc_promo, b.img_promo
+                            from anuncios a inner join promo b on a.id_anuncio = b.fk_id_anuncio 
+                            where b.vig_promo = 1 and a.fec_termino_anuncio >= sysdate() and b.duracion_promo > sysdate()  and b.fk_id_anuncio = :id";
+                        }
 
                 
                                 
                             
 
                 $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
 
                 $response = $stmt->fetchAll();

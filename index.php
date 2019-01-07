@@ -157,7 +157,7 @@
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
             </li>
                                       <?php 
-                                        $re1 = $fun->busca_promo();   
+                                        $re1 = $fun->busca_promo(0);   
                                          if (!empty($re1)) {
                                            echo '<li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
@@ -430,7 +430,7 @@
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
             </li>
                                       <?php 
-                                        $re1 = $fun->busca_promo();   
+                                        $re1 = $fun->busca_promo(0);   
                                          if (!empty($re1)) {
                                            echo '<li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vista/vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
