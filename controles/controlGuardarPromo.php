@@ -21,7 +21,7 @@
 			echo"<script type=\"text/javascript\">alert('Error, comuniquese con el administrador'); window.location='http://seaconcagua.cl/';</script>";     
 			} else {
 			
-			echo"<script type=\"text/javascript\">alert('Promo Validada, gracias por pertenecer a SEAconcagua'); window.location='http://seaconcagua.cl/';</script>";   
+			echo"<script type=\"text/javascript\">alert('Promo Validada, gracias por pertenecer a SEAconcagua'); window.close();</script>";   
 				
 					}
 	} catch (Exception $e) {
