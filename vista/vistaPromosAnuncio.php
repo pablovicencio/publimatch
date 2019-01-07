@@ -1,7 +1,7 @@
 <?php 
-if( isset($_GET['id']) ){
+if( isset($_GET['anu']) ){
     //Si la sesión esta seteada no hace nada
-    $id = $_GET['id'];
+    $id = $_GET['anu'];
   }
   else{
     //Si no lo redirige a la pagina index para que inicie la sesion 
@@ -183,7 +183,7 @@ label:hover ~ label {
             
 
         <?php 
-                                        $re = $fun->busca_promo(0);   
+                                        $re = $fun->busca_promo($id);   
                                         foreach($re as $row)      
                                             {
                                                echo (

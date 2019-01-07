@@ -193,7 +193,7 @@ input[type="radio"]:checked ~ label {
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
             </li>
                                       <?php 
-                                        $re1 = $fun->busca_promo();   
+                                        $re1 = $fun->busca_promo(0);   
                                          if (!empty($re1)) {
                                            echo '<li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
@@ -341,6 +341,16 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
 
 
                   </div>
+
+                  <div class="form-group">
+                    <?php 
+                                        $re1 = $fun->busca_promo_anu($id);   
+                                         if (!empty($re1)) {
+                                           echo '<a href="vistaPromosAnuncio.php?anu='.$id.'" class="btn btn-primary">Ver Promos</a>';
+                                          }
+                                        ?>      
+                  </div>
+
 
                 
             </div>
@@ -546,7 +556,7 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>
             </li>
                                       <?php 
-                                        $re1 = $fun->busca_promo();   
+                                        $re1 = $fun->busca_promo(0);   
                                          if (!empty($re1)) {
                                            echo '<li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo-mob" name="link-promo-mob"><i class="fa fa-bell" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="vistaPromociones.php?id=1" id="link-promo" name="link-promo">Promos!</a>
