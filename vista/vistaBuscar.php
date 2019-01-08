@@ -33,6 +33,11 @@ $anuncio = stripcslashes ($_POST['anuncio']);
                                   <a href="vista/vistaAnuncio.php?id='.$row['id_anuncio'].'&anu='.$anuncio.'&com='.$comuna.'" class="btn btn-primary">Ver Mas</a><br>
                                   '.$puntaje.'
                                 </div>
+                                <div class="card-footer">
+                                <a href="vista/vistaPromosAnuncio.php?anu='.$row['id_anuncio'].'" class="btn btn-primary">
+                                  Promos <span class="badge badge-light">'.$row['promo'].'</span>
+                                </a><br>
+                                </div>
                               </div>
                               '
                   );

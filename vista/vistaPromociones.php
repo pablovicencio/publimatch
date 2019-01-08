@@ -113,6 +113,7 @@ setlocale(LC_ALL,"es_ES");
               document.getElementById("final_promo").innerHTML = fecha.toLocaleDateString("es-ES", options);
               document.getElementById("hora_final_promo").innerHTML = h + ":" + m;
               document.getElementById("mapa").innerHTML = result[0].maps_anuncio;
+              document.getElementById("stock_promo").innerHTML = result[0].stock;
               window.scroll(0, 0);
 
         
@@ -364,7 +365,7 @@ label:hover ~ label {
            <div class="row">
              <div class="col-12">
                 <p id="desc_promo"></p>
-                <label>Esta promo finaliza el <span id="final_promo"  name="final_promo"></span>, a las <span id="hora_final_promo"  name="hora_final_promo"></span></label>
+                <label>Esta promo finaliza el <span id="final_promo"  name="final_promo" class="font-weight-bold"></span>, a las <span id="hora_final_promo"  name="hora_final_promo" class="font-weight-bold"> </span> y quedan aproximadamente <span id="stock_promo"  name="stock_promo" class="font-weight-bold"></span> promos</label>
                 <h6>Encuentra esta promo en:<h6>
                     <div class="embed-responsive embed-responsive-16by9" id="mapa">
                     </div>
