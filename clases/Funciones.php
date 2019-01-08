@@ -16,7 +16,7 @@ class Funciones
 
                
 
-                    $sql = "select id_promo from promo where fk_id_anuncio = :id";
+                    $sql = "select count(id_promo) promo from promo where fk_id_anuncio = :id";
 
                 
                                 
@@ -26,7 +26,7 @@ class Funciones
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
 
-                $response = $stmt->fetchAll();
+                $response = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $response;
 
             } catch (Exception $e) {
@@ -131,10 +131,11 @@ class Funciones
 
                
 
-                    $sql = "select a.id_anuncio, a.nom_anuncio,a.cat_anuncio , 
+                    $sql = "select count(p.id_promo) promo, a.id_anuncio, a.nom_anuncio,a.cat_anuncio , 
 IFNULL((select ROUND((sum(b.nota_puntaje)/count(b.id_puntaje)), 0) from puntaje b where a.id_anuncio = b.fk_anuncio and b.vig_puntaje = 1),0) puntaje, 
 IFNULL((select i.img from img_anuncio i where a.id_anuncio = i.fk_id_anuncio order by i.id_img limit 1),'https://www.w3schools.com/bootstrap4/img_avatar1.png') img
-from anuncios a where  a.cat_anuncio = :id  and a.vig_anuncio = 1 and a.fec_termino_anuncio >= sysdate() 
+from anuncios a left join promo p on a.id_anuncio = fk_id_anuncio and p.duracion_promo > sysdate()
+ where  a.cat_anuncio = :id  and a.vig_anuncio = 1 and a.fec_termino_anuncio >= sysdate() 
 group by a.id_anuncio, a.nom_anuncio,a.cat_anuncio ";
 
                 

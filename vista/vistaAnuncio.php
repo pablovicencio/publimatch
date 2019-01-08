@@ -345,8 +345,9 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
                   <div class="form-group">
                     <?php 
                                         $re1 = $fun->busca_promo_anu($id);   
-                                         if (!empty($re1)) {
-                                           echo '<a href="vistaPromosAnuncio.php?anu='.$id.'" class="btn btn-primary">Ver Promos</a>';
+                                         if ($re1['promo']>0) {
+                                           echo '<a href="vistaPromosAnuncio.php?anu='.$id.'" class="btn btn-outline-success">Promos 
+                                                  <span class="badge badge-dark">'.$re1['promo'].'</span></a>';
                                           }
                                         ?>      
                   </div>
