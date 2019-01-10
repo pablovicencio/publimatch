@@ -421,7 +421,7 @@
     
           <ul class="navbar-nav m-auto " >
             <li class="nav-item mx-0 mx-0">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con" name="link-con">Categorias</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con-mob" name="link-con-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con" name="link-con">Categorias</a>
             </li>
             <li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Nosotros</a>
