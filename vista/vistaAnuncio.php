@@ -55,12 +55,60 @@ if( isset($_GET['id']) ){
               document.createEvent("TouchEvent"); 
               document.getElementById("menuMob").style.display = "block";
               document.getElementById("menuMobFoo").style.display = "block";
+              var touch = 'S';
+
+                  var nav = {
+                            Android: function() {
+                                return navigator.userAgent.match(/Android/i);
+                            },
+                            BlackBerry: function() {
+                                return navigator.userAgent.match(/BlackBerry/i);
+                            },
+                            iOS: function() {
+                                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                            },
+                            Opera: function() {
+                                return navigator.userAgent.match(/Opera Mini/i);
+                            },
+                            Windows: function() {
+                                return navigator.userAgent.match(/IEMobile/i);
+                            },
+                            any: function() {
+                                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                            }
+                        };
 
           }
           catch(e){ 
               document.getElementById("menuDesk").style.display = "block";
+              var touch = 'N'
+              var nav = 'Desk-'+navigator.appCodeName;
           }
+              
+
+
+          
+
+              $.ajax({
+              type: "POST",
+              url: '../controles/controlEstVisita.php',
+              data:{t :touch, n :nav, a :<?php echo $id;?>},
+              success: function (result) { 
+              console.log(1);
+
+
+
+              },
+              error: function(){
+                      console.log(2); 
+              }
+            });
+
+
+
       }
+
+
 
 
 
@@ -265,7 +313,7 @@ input[type="radio"]:checked ~ label {
                     </div>
                     <span class="font-weight-bold"><?php echo $row['nom_comuna']; ?></span><br>
                     <span class="font-weight-bold"><?php echo $row['dir_anuncio']; ?></span><br><br>
-                    <span >Telefonos: <?php echo $row['fono']; ?></span><br><br>
+                    <span >Telefonos: <a href="tel:<?php echo $row['fono1']; ?>"><?php echo $row['fono1']; ?></a> - <a href="tel:<?php echo $row['fono2']; ?>"><?php echo $row['fono2']; ?></a></span><br><br>
 
 
 

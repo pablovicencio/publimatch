@@ -214,7 +214,7 @@ group by a.id_anuncio, a.nom_anuncio,a.cat_anuncio ";
                 $pdo = AccesoDB::getCon();
 
                             
-                                $sql = "select a.nom_anuncio,c.nom_comuna,a.dir_anuncio, a.desc_anuncio, CONCAT(IFNULL(a.fono1_anuncio, ''), ' - ', IFNULL(a.fono2_anuncio,'')) fono, 
+                                $sql = "select a.nom_anuncio,c.nom_comuna,a.dir_anuncio, a.desc_anuncio, a.fono1_anuncio fono1,a.fono2_anuncio fono2, 
 ifnull(a.fb_anuncio,'0') fb,ifnull(a.ig_anuncio,'0') ig,ifnull(a.tw_anuncio,'0') tw,ifnull(a.ws_anuncio,'0') ws, h.hdesde_horario hdesde_anuncio, h.hhasta_horario hhasta_anuncio, a.maps_anuncio,
 iFNULL((select ROUND((sum(b.nota_puntaje)/count(b.id_puntaje)), 0) from puntaje b where a.id_anuncio = b.fk_anuncio and b.vig_puntaje = 1),0) puntaje
  from anuncios a inner join comunas_cl c on a.comuna_anuncio = c.id_comuna inner join horario h on a.id_anuncio = h.fk_id_anuncio = 1 where  a.id_anuncio = :anu and a.vig_anuncio = 1 and h.vig_horario = 1 and dia_horario = :dia and a.fec_termino_anuncio >= sysdate()  ";

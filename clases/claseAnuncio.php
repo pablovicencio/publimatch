@@ -60,4 +60,49 @@ class AnuncioDAO
 
     }
 
+    /*///////////////////////////////////////
+    Registrar Visita anuncio
+    //////////////////////////////////////*/
+    public function reg_visita($touch, $nav, $fec) {
+
+                 try{
+             
+                $pdo = AccesoDB::getCon();
+
+                $sql_reg_vis = " INSERT INTO `reg_visita`
+                                    (
+                                    `id_anuncio`,
+                                    `touch`,
+                                    `nav`,
+                                    `fec`)
+                                    VALUES
+                                    (
+                                    :id_anu,
+                                    :touch,
+                                    :nav,
+                                    :fec)";
+
+
+                $stmt = $pdo->prepare($sql_reg_vis);
+                
+                $stmt->bindParam(":id_anu", $this->id_anu, PDO::PARAM_INT);
+                $stmt->bindParam(":touch", $touch, PDO::PARAM_STR);
+                $stmt->bindParam(":nav", $nav, PDO::PARAM_STR);
+                $stmt->bindParam(":fec", $fec, PDO::PARAM_STR);
+                $stmt->execute();
+
+
+                if ($stmt->rowCount() <> 0) {
+                    return 1;
+                 }else{
+                    return 2;
+                 }
+        
+
+            } catch (Exception $e) {
+                echo"Error, comuniquese con el administrador".  $e->getMessage().""; 
+            }
+
+    }
+
 }
