@@ -95,7 +95,7 @@
                             document.getElementById("portafolio_titulo").innerHTML = "EcoTurismo";
                           break;
                           case 2:
-                            document.getElementById("portafolio_titulo").innerHTML = "Restaurantes";
+                            document.getElementById("portafolio_titulo").innerHTML = "Tiendas y Restaurantes";
                           break;
                           case 3:
                             document.getElementById("portafolio_titulo").innerHTML = "Deportes";
@@ -238,7 +238,7 @@
           </div>
           <div class="col-md-6 col-lg-4">
             <a class="portfolio-item d-block mx-auto" href="#portafolio-modal" onclick="modal(2)">
-            <h5 align="center">Restaurantes</h5>
+            <h5 align="center">Tiendas y Restaurantes</h5>
               <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                 <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                   <i class="fas fa-search-plus fa-3x"></i>
@@ -421,7 +421,7 @@
     
           <ul class="navbar-nav m-auto " >
             <li class="nav-item mx-0 mx-0">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con" name="link-con">Categorias</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con-mob" name="link-con-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#categorias" id="link-con" name="link-con">Categorias</a>
             </li>
             <li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#conocenos" id="link-con" name="link-con">Nosotros</a>

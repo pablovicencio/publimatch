@@ -55,12 +55,60 @@ if( isset($_GET['id']) ){
               document.createEvent("TouchEvent"); 
               document.getElementById("menuMob").style.display = "block";
               document.getElementById("menuMobFoo").style.display = "block";
+              var touch = 'S';
+
+                  var nav = {
+                            Android: function() {
+                                return navigator.userAgent.match(/Android/i);
+                            },
+                            BlackBerry: function() {
+                                return navigator.userAgent.match(/BlackBerry/i);
+                            },
+                            iOS: function() {
+                                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                            },
+                            Opera: function() {
+                                return navigator.userAgent.match(/Opera Mini/i);
+                            },
+                            Windows: function() {
+                                return navigator.userAgent.match(/IEMobile/i);
+                            },
+                            any: function() {
+                                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                            }
+                        };
 
           }
           catch(e){ 
               document.getElementById("menuDesk").style.display = "block";
+              var touch = 'N'
+              var nav = 'Desk-'+navigator.appCodeName;
           }
+              
+
+
+          
+
+              $.ajax({
+              type: "POST",
+              url: '../controles/controlEstVisita.php',
+              data:{t :touch, n :nav, a :<?php echo $id;?>},
+              success: function (result) { 
+              console.log(1);
+
+
+
+              },
+              error: function(){
+                      console.log(2); 
+              }
+            });
+
+
+
       }
+
+
 
 
 
@@ -265,7 +313,7 @@ input[type="radio"]:checked ~ label {
                     </div>
                     <span class="font-weight-bold"><?php echo $row['nom_comuna']; ?></span><br>
                     <span class="font-weight-bold"><?php echo $row['dir_anuncio']; ?></span><br><br>
-                    <span >Telefonos: <?php echo $row['fono']; ?></span><br><br>
+                    <span >Telefonos: <a href="tel:<?php echo $row['fono1']; ?>"><?php echo $row['fono1']; ?></a> - <a href="tel:<?php echo $row['fono2']; ?>"><?php echo $row['fono2']; ?></a></span><br><br>
 
 
 
@@ -345,8 +393,9 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
                   <div class="form-group">
                     <?php 
                                         $re1 = $fun->busca_promo_anu($id);   
-                                         if (!empty($re1)) {
-                                           echo '<a href="vistaPromosAnuncio.php?anu='.$id.'" class="btn btn-primary">Ver Promos</a>';
+                                         if ($re1['promo']>0) {
+                                           echo '<a href="vistaPromosAnuncio.php?anu='.$id.'" class="btn btn-outline-success">Promos 
+                                                  <span class="badge badge-dark">'.$re1['promo'].'</span></a>';
                                           }
                                         ?>      
                   </div>
@@ -550,7 +599,7 @@ $valida = $fun->check_time($t1, $t2, $tn) ? "si" : "no";
     
           <ul class="navbar-nav m-auto " >
             <li class="nav-item mx-0 mx-0">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con-mob" name="link-con-mob"><i class="fa fa-users" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con" name="link-con">Sugeridos</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con-mob" name="link-con-mob"><i class="fa fa-th-large" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sugeridos" id="link-con" name="link-con">Sugeridos</a>
             </li>
             <li class="nav-item mx-0 mx-0">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu-mob" name="link-anu-mob"><i class="fa fa-space-shuttle" aria-hidden="true"></i></a><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contacto" id="link-anu" name="link-anu">Anunciate!</a>

@@ -26,17 +26,39 @@ $id = stripcslashes ($_POST['id']);
                               }
                         }
 
-                      echo (
-                              '  <div class="card" >
-                                      <img class="card-img-top" src="'.$row['img'].'" alt="Card image">
-                                      <div class="card-body">
-                                        <h4 class="card-title">'.$row['nom_anuncio'].'</h4>
-                                        <a href="vista/vistaAnuncio.php?id='.$row['id_anuncio'].'&anu='.$row['nom_anuncio'].'&com=-1" class="btn btn-primary">Ver Mas</a><br>
-                                        '.$puntaje.'
-                                      </div>
-                                    </div>
-                                    '
-                        );
+                      if ($row['promo'] > 0) {
+                    echo (
+                        '  <div class="card" >
+                                <img class="card-img-top" src="'.$row['img'].'" alt="Card image">
+                                <div class="card-body">
+                                  <h4 class="card-title">'.$row['nom_anuncio'].'</h4>
+                                  <a href="vista/vistaAnuncio.php?id='.$row['id_anuncio'].'&anu='.$row['nom_anuncio'].'&com=-1" class="btn btn-primary">Ver Mas</a><br>
+                                  '.$puntaje.'
+                                </div>
+                                <div class="card-footer">
+                                <a href="vista/vistaPromosAnuncio.php?anu='.$row['id_anuncio'].'" class="btn btn-outline-success">
+                                  Promos <span class="badge badge-dark">'.$row['promo'].'</span>
+                                </a><br>
+                                </div>
+                              </div>
+                              '
+                  );
+                  }else{
+                    echo (
+                        '  <div class="card" >
+                                <img class="card-img-top" src="'.$row['img'].'" alt="Card image">
+                                <div class="card-body">
+                                  <h4 class="card-title">'.$row['nom_anuncio'].'</h4>
+                                  <a href="vista/vistaAnuncio.php?id='.$row['id_anuncio'].'&anu='.$row['nom_anuncio'].'&com=-1" class="btn btn-primary">Ver Mas</a><br>
+                                  '.$puntaje.'
+                                </div>
+                                <div class="card-footer">
+                                <br>
+                                </div>
+                              </div>
+                              '
+                  );
+                  }
                     
                     }
               }
